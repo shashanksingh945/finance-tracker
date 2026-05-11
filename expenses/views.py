@@ -45,23 +45,26 @@ def logout_view(request):
 @login_required
 def home(request):
     expenses= Expense.objects.filter(user=request.user).order_by('-date')
+
     expenses_list=expenses
-    paginator=Paginator(expenses_list,5)
-    page_number=request.GET.get('page')
-    expenses=paginator.get_page(page_number)
 
     category = request.GET.get('category')
     date=request.GET.get('date')
     search=request.GET.get('search')
 
     if category:
-        expenses = expenses.filter(category__name=category)
+        expenses_list = expenses_list.filter(category__name=category)
 
     if date:
-        expenses=expenses.filter(date=date)
+        expenses_list=expenses_list.filter(date=date)
 
     if search:
-        expenses=expenses.filter(description__icontains=search)
+        expenses_list=expenses_list.filter(description__icontains=search)
+
+    paginator=Paginator(expenses_list,5)
+    page_number=request.GET.get('page')
+    expenses=paginator.get_page(page_number)
+
 
     total=sum(expense.amount for expense in expenses)
     latest=expenses[0].amount if expenses else 0
