@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Welcome back, {{ user.username }}</h2>
+
+<div class="row mb-4">
+    <div class="col-md-5">
+        <div class="card p-4">
+            <h4 class="mb-3">
+                Expense by Category
+            </h4>
+            <canvas id="categoryChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- summary card -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="summary-card bg-primary">
+            <div class="summary-title">
+                Total Expenses
+            </div>
+
+            <div class="summary-value">
+                Rs{{ total }}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="summary-card bg-success">
+            <div class="summary-title">
+                Total Transactions
+            </div>
+
+            <div class="summary-value">
+                {{ expenses|length }}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="summary-card bg-dark">
+            <div class="summary-title">
+                Latest Expense
+            </div>
+
+            <div class="summary-value">
+                Rs{{ latest }}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="summary-card bg-warning">
+            <div class="summary-title">
+                This Month
+            </div>
+            <div class="summary-value">Rs:{{ monthly_total }}</div>
+        </div>
+    </div>
+
+</div>
+
+{% if warning %}
+<div class="alert alert-danger">
+    Warning! You crossed your budget limit.
+</div>
+{% endif %}
+
+<!-- Search section -->
+<div class="card p-3 mb-4">
+    <form method="GET">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-label">
+                    Category
+                </label>
+
+                <select name="category" class="form-select">
+                    <option value="">All Categories</option>
+
+                    {% for category in categories %}
+                    <option value="{{ category.name }}">
+                        {{ category.name}}
+                    </option>
+                    {% endfor%}
+
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">
+                    Date
+                </label>
+                <input type="date" name="date" class="form-control">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">
+                    Search
+                </label>
+                <input type="text" name="search" class="form-control" placeholder="Search description">
+            </div>
+            <div class="col-md-12 mt-3">
+                <button type="submit" class="btn btn-primary w-100">
+                    Filter
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!-- Expenses Table -->
+<div class="card p-3">
+    <h4 class="mb-3">
+        Recent Expenses
+    </h4>
+
+    <table class="table table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>Rs{{ expense.amount}}</td>
+                <td>{{ expense.category}}</td>
+                <td>{{ expense.date}}</td>
+                <td>{{ expense.description}}</td>
+                <td>
+                <a href="/edit/{{expense.id}}/" class="btn btn-warning btn-sm">Edit</a>
+                <a href="/delete/{{expense.id}}/" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center py-4">No expenses added yet</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<nav>
+    <ul class="pagination">
+        {% if expenses.has_previous %}
+        <li class="page-item">
+            <a href="?page={{expenses.previous_page_number}}" class="page-link">Previous</a>
+        </li>
+        {% endif %}
+        <li class="page-item active">
+            <span class="page-link">{{ expenses.number }}</span>
+        </li>
+
+        {% if expenses.has_next %}
+        <li class="page-item">
+            <a href="?page={{ expenses.next_page_number }}" class="page-link">Next</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const categoryLabels = {{ category_labels|safe }};
+    const categoryAmounts = {{ category_amounts|safe }};
+    const ctx=document.getElementById('categoryChart');
+    console.log(typeof Chart);
+    new Chart(ctx,{
+        type:'pie',
+        data:{
+            labels:categoryLabels,
+            datasets:[{
+                label:'Expenses',
+                data: categoryAmounts,
+                borderWidth:1
+            }]
+        },
+        options:{
+            responsive:true
+        }
+    });
+
+</script>
+{% endblock %}
