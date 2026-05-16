@@ -8,9 +8,11 @@ A full-stack personal expense management web app built with **Django** and **Pyt
 
 ## 📸 Screenshots
 
-> _Add screenshots here after deployment — login page, dashboard, add expense form_
-> 
-> Tip: Drag and drop images directly into this README on GitHub.
+<img width="1919" height="910" alt="Add_Expense" src="https://github.com/user-attachments/assets/14cb524c-1e98-4c87-8884-75a99b5d6c16" />
+<img width="1894" height="909" alt="dashboard" src="https://github.com/user-attachments/assets/8d0701e4-6096-49a7-97e1-2ed611449ea7" />
+<img width="1919" height="905" alt="chart" src="https://github.com/user-attachments/assets/511c5e40-cc9a-47ca-b03d-caf1a673ef50" />
+
+
 
 ---
 
