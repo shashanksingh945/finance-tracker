@@ -16,4 +16,4 @@ class Expense(models.Model):
     description=models.TextField()
 
     def __str__(self):
-        return f"{self.ammount}-{self.category}"
+        return f"{self.amount}-{self.category}"
