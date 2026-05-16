@@ -1,4 +1,4 @@
-# 💰 Finance Tracker
+# Finance Tracker
 
 A full-stack personal expense management web app built with **Django** and **Python**. Track your daily expenses, visualize spending patterns by category, set budget limits, and export your data — all with secure user authentication.
 
@@ -6,7 +6,7 @@ A full-stack personal expense management web app built with **Django** and **Pyt
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 <img width="1919" height="910" alt="Add_Expense" src="https://github.com/user-attachments/assets/14cb524c-1e98-4c87-8884-75a99b5d6c16" />
 <img width="1894" height="909" alt="dashboard" src="https://github.com/user-attachments/assets/8d0701e4-6096-49a7-97e1-2ed611449ea7" />
@@ -16,25 +16,25 @@ A full-stack personal expense management web app built with **Django** and **Pyt
 
 ---
 
-## ✨ Features
+## Features
 
-- 🔐 **User Authentication** — Register, login, and logout securely using Django's built-in auth system
-- ➕ **Add / Edit / Delete Expenses** — Full CRUD operations for managing your expenses
-- 📂 **Category Management** — Organize expenses by category (Food, Travel, Bills, etc.)
-- 🔍 **Search & Filter** — Filter expenses by category, date, or keyword
-- 📄 **Pagination** — Clean, paginated expense listing for easy navigation
-- 📊 **Dashboard Analytics** — Visual summary including:
+- **User Authentication** — Register, login, and logout securely using Django's built-in auth system
+- **Add / Edit / Delete Expenses** — Full CRUD operations for managing your expenses
+- **Category Management** — Organize expenses by category (Food, Travel, Bills, etc.)
+- **Search & Filter** — Filter expenses by category, date, or keyword
+- **Pagination** — Clean, paginated expense listing for easy navigation
+- **Dashboard Analytics** — Visual summary including:
   - Total expenses
   - Monthly spending total
   - Latest expense
   - Budget warning alert
-- 🍩 **Category Chart** — Interactive pie/doughnut chart (Chart.js) showing spending by category
-- 📥 **CSV Export** — Download all your expenses as a `.csv` file
-- ⚠️ **Budget Warning** — Get alerted when spending exceeds your set limit
+- **Category Chart** — Interactive pie/doughnut chart (Chart.js) showing spending by category
+- **CSV Export** — Download all your expenses as a `.csv` file
+- **Budget Warning** — Get alerted when spending exceeds your set limit
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -47,7 +47,7 @@ A full-stack personal expense management web app built with **Django** and **Pyt
 
 ---
 
-## 🚀 Getting Started Locally
+## Getting Started Locally
 
 ### Prerequisites
 - Python 3.10+
@@ -94,7 +94,7 @@ Visit `http://127.0.0.1:8000` in your browser.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 finance_tracker/
@@ -117,7 +117,7 @@ finance_tracker/
 
 ---
 
-## 📊 Data Models
+## Data Models
 
 ### `Category`
 | Field | Type |
@@ -135,7 +135,7 @@ finance_tracker/
 
 ---
 
-## 🌐 Deployment (Render)
+## Deployment (Render)
 
 This app is deployed on [Render](https://render.com). To deploy your own instance:
 
@@ -152,7 +152,7 @@ This app is deployed on [Render](https://render.com). To deploy your own instanc
 
 ---
 
-## 🔮 Upcoming Features
+## Upcoming Features
 
 - [ ] Income tracking (not just expenses)
 - [ ] User-defined budget limits
@@ -161,13 +161,13 @@ This app is deployed on [Render](https://render.com). To deploy your own instanc
 
 ---
 
-## 🙋‍♂️ Author
+## Author
 
 **Shashank**  
 [GitHub](https://github.com/shashanksingh945/finance-tracker) • [LinkedIn](http://www.linkedin.com/in/shashank-singh-781860263)
 
 ---
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
